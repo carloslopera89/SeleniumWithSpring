@@ -6,21 +6,35 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import page.SignUpPageObject;
+import page.SignUpServices;
+
+import static util.RandomNumberGenerator.getPhoneNumberFaker;
 
 public class SignUpStepDefintions {
 
     @Given("Pepito wants to have an account")
-    public void pepito_wants_to_have_an_account() {
+    public void pepito_wants_to_have_an_account() throws InterruptedException {
 
         System.setProperty("webdriver.chrome.driver",
                 System.getProperty("user.dir") + "/src/test/resources/drivers/mac/chromedriver");
 
         WebDriver driver = new ChromeDriver();
-        SignUpPageObject signUpPageObject = new SignUpPageObject(driver);
-        signUpPageObject.go("http://demo.automationtesting.in/Register.html");
-        signUpPageObject.writeFirstName("Pepito");
-        signUpPageObject.writeLastName("Perez");
-        signUpPageObject.clickOnSubmit();
+        SignUpServices signUpServices = new SignUpServices(driver);
+        signUpServices.go("http://demo.automationtesting.in/Register.html");
+        signUpServices.writeFirstName("Pepito");
+        signUpServices.writeLastName("Perez");
+        signUpServices.writeEmailAddress("perez@gmail.com");
+        signUpServices.writePhone(getPhoneNumberFaker());
+        signUpServices.selectGenderMale();
+        signUpServices.selectBirthDay("10");
+        signUpServices.selectBirthMonth("February");
+        signUpServices.selectBirthYear("1989");
+        signUpServices.writePassword("EuLDLM2022");
+        signUpServices.writeConfirmPassword("EuLDLM2022");
+        signUpServices.clickOnSubmit();
+
+        Thread.sleep(5000);
+        driver.quit();
 
     }
 
