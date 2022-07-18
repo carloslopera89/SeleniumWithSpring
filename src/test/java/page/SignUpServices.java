@@ -36,7 +36,7 @@ public class SignUpServices {
     }
 
     public void selectGenderMale() {
-        this.signUpPageObject.getGenderMale();
+        this.signUpPageObject.getGenderMale().click();
     }
 
     public void selectGenderFemale() {

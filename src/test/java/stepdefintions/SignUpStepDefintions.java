@@ -1,11 +1,9 @@
 package stepdefintions;
 
+import hook.HookDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import page.SignUpPageObject;
 import page.SignUpServices;
 
 import static util.RandomNumberGenerator.getPhoneNumberFaker;
@@ -13,13 +11,10 @@ import static util.RandomNumberGenerator.getPhoneNumberFaker;
 public class SignUpStepDefintions {
 
     @Given("Pepito wants to have an account")
-    public void pepito_wants_to_have_an_account() throws InterruptedException {
+    public void pepito_wants_to_have_an_account() {
 
-        System.setProperty("webdriver.chrome.driver",
-                System.getProperty("user.dir") + "/src/test/resources/drivers/mac/chromedriver");
+        SignUpServices signUpServices = new SignUpServices(HookDriver.driver);
 
-        WebDriver driver = new ChromeDriver();
-        SignUpServices signUpServices = new SignUpServices(driver);
         signUpServices.go("http://demo.automationtesting.in/Register.html");
         signUpServices.writeFirstName("Pepito");
         signUpServices.writeLastName("Perez");
@@ -32,10 +27,6 @@ public class SignUpStepDefintions {
         signUpServices.writePassword("EuLDLM2022");
         signUpServices.writeConfirmPassword("EuLDLM2022");
         signUpServices.clickOnSubmit();
-
-        Thread.sleep(5000);
-        driver.quit();
-
     }
 
     @When("he sends required information to get the account")
