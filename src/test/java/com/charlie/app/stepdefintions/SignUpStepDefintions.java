@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import com.charlie.app.page.SignUpServices;
 
@@ -16,10 +17,13 @@ public class SignUpStepDefintions {
     @Autowired
     private SignUpServices signUpServices;
 
+    @Value("${url}")
+    private String url;
+
     @Given("Pepito wants to have an account")
     public void pepito_wants_to_have_an_account() {
 
-        signUpServices.go("http://demo.automationtesting.in/Register.html");
+        signUpServices.go(url);
         signUpServices.writeFirstName("Pepito");
         signUpServices.writeLastName("Perez");
         signUpServices.writeEmailAddress("perez@gmail.com");
