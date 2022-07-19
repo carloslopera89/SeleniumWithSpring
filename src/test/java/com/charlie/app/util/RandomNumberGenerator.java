@@ -1,7 +1,6 @@
-package util;
+package com.charlie.app.util;
 
 import com.github.javafaker.Faker;
-import com.github.javafaker.PhoneNumber;
 
 import java.util.Random;
 
