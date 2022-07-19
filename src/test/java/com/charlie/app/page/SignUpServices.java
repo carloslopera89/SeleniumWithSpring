@@ -1,18 +1,20 @@
-package page;
+package com.charlie.app.page;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SignUpServices {
 
-    private WebDriver webDriver;
+    @Autowired
     private SignUpPageObject signUpPageObject;
 
+    private WebDriver webDriver;
 
+    @Autowired
     public SignUpServices(WebDriver webDriver) {
         this.webDriver = webDriver;
-        signUpPageObject = new SignUpPageObject(webDriver);
-
     }
 
     public void go(String url) {

@@ -1,19 +1,23 @@
-package stepdefintions;
+package com.charlie.app.stepdefintions;
 
-import hook.HookDriver;
+import com.charlie.app.conf.DriverConf;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import page.SignUpServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import com.charlie.app.page.SignUpServices;
 
-import static util.RandomNumberGenerator.getPhoneNumberFaker;
+import static com.charlie.app.util.RandomNumberGenerator.getPhoneNumberFaker;
 
+@ContextConfiguration(classes = {DriverConf.class})
 public class SignUpStepDefintions {
+
+    @Autowired
+    private SignUpServices signUpServices;
 
     @Given("Pepito wants to have an account")
     public void pepito_wants_to_have_an_account() {
-
-        SignUpServices signUpServices = new SignUpServices(HookDriver.driver);
 
         signUpServices.go("http://demo.automationtesting.in/Register.html");
         signUpServices.writeFirstName("Pepito");

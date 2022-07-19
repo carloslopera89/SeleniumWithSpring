@@ -1,4 +1,4 @@
-package hook;
+package com.charlie.app.hook;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
