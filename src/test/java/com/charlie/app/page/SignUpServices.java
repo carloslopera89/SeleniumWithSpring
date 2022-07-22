@@ -1,6 +1,8 @@
 package com.charlie.app.page;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,20 +10,20 @@ import org.springframework.stereotype.Component;
 public class SignUpServices {
 
     @Autowired
-    private SignUpPageObject signUpPageObject;
-
-    private WebDriver webDriver;
+    WebDriverWait wait;
 
     @Autowired
-    public SignUpServices(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
+    private SignUpPageObject signUpPageObject;
+
+    @Autowired
+    private WebDriver webDriver;
 
     public void go(String url) {
         this.webDriver.get(url);
     }
 
     public void writeFirstName(String firstName) {
+        this.wait.until(ExpectedConditions.visibilityOf(this.signUpPageObject.getFirstNameTextbox()));
         this.signUpPageObject.getFirstNameTextbox().sendKeys(firstName);
     }
 
