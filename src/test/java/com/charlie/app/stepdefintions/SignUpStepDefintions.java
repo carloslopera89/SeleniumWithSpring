@@ -11,6 +11,8 @@ import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 @ContextConfiguration(classes = {DriverConf.class})
 public class SignUpStepDefintions {
 
@@ -39,8 +41,13 @@ public class SignUpStepDefintions {
         Thread.sleep(5000);
     }
 
-    @Then("he should be told that the account wa created")
-    public void he_should_be_told_that_the_account_wa_created() {
+    @Then("he should be told that the account was created")
+    public void he_should_be_told_that_the_account_was_created() {
+        assertThat(true).isEqualTo(true);
+    }
 
+    @Then("he should be told that the account was not created")
+    public void he_should_be_told_that_the_account_was_not_created() {
+        assertThat(true).isEqualTo(false);
     }
 }
