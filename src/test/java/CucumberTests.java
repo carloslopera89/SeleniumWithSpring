@@ -5,6 +5,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/features/signup.feature",
         plugin = {"de.monochromata.cucumber.report.PrettyReports:target/cucumber",
-        "pretty","json:target/cucumber-reports/Cucumber.json"})
+                "pretty", "json:target/cucumber-reports/Cucumber.json",
+                "com.charlie.app.util.reporting.HookReporter"
+        }
+)
 public class CucumberTests {
 }
