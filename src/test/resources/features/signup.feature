@@ -1,5 +1,6 @@
 Feature: Client sign up
 
+  @run
   Scenario: Client sign up Successfully
     Given Pepito wants to have an account
     When he sends required information to get the account
